@@ -1,0 +1,69 @@
+body {
+  background-color: rgb(249, 230, 255);
+}
+.titulo {
+  color: rgb(231, 148, 253);
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+  letter-spacing: 1rem;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.titulo:hover {
+  background-color: blueviolet;
+  box-shadow: 0 0 10px rgb(33, 3, 61), 0 0 40px rgb(33, 3, 61), 0 0 80px rgb(33, 3, 61);
+}
+
+.datos_principales {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(199, 117, 236);
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(209, 196, 255) ;
+  }
+  
+  
+  .listas {
+    display: flex;
+    justify-content: space-around;
+    color: rgb(193, 114, 233);
+  }
+  
+  .formulario_alquiler {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: rgba(205, 120, 248, 0.966);
+  }
+  
+  .button_mostrar {
+    margin: 2rem auto;
+    width: 10rem;
+    padding: 1rem ;
+    color: rgb(217, 121, 255);
+  }
+
+  .button_mostrar:hover {
+    background-color:  rgb(232, 174, 240);
+    box-shadow: 0 0 10px rgb(232, 174, 240), 0 0 40px rgb(232, 174, 240), 0 0 80px rgb(232, 174, 240);
+  }
+
+  .alquileres {
+    width: 70%;
+    margin: 0 auto;
+  }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoria De Objetos</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="titulo">
+        <header>
+            <h1>Alquiler De Vehiculos</h1>
+        </header>
+    </div>
+    <div class="datos_principales">
+        <form action="">
+            <label for="nombre">
+                <span>¿Cual es tu nombre?</span>
+                <input type="text" id="nombre">
+            </label>
+            <label for="fecha">
+                <span>¿Dia de alquiler?</span>
+                <input type="date" id="fecha">
+            </label>
+            <label for="cita">
+                <span>¿Cual es la hora de tu cita?</span>
+                <input type="time" id="cita">
+            </label>
+        </form>
+    </div>
+    <main>
+        <div class="listas">
+            <ol id="listaCiudades" class="lista-ciudades">
+            </ol>
+            <ol id="listaVehiculos" class="lista-vehiculos">
+            </ol>
+            <ol id="listaPrecios" class="lista-precios">
+            </ol>
+        </div>
+
+        <form class="formulario_alquiler" id="formulario_alquiler">
+            <div class="campo_ciudades_formulario">
+                <label for="ciudades">Elije una ciudad</label>
+                <select name="ciudades" id="ciudades">
+                    <option value="Guadalajara">Guadalajara</option>
+                    <option value="Tijuana">Tijuana</option>
+                    <option value="Culiacan">Culiacan</option>
+                    <option value="Toluca">Toluca</option>
+                    <option value="Merida">Merida</option>
+                </select>
+            </div>
+            <div class="campo_vehiculos_formulario">
+                <label for="vehiculos">Elije un vehiculo</label>
+                <select name="vehiculo" id="vehiculos">
+                    <option value="Bicicleta">Bicicleta</option>
+                    <option value="Moto">Moto</option>
+                    <option value="Cuatrimoto">Cuatrimoto</option>
+                    <option value="Carro de golf">Carro de golf</option>
+                </select>
+            </div>
+            <div class="campo_cantidad_formulario">
+                <label for="cantidad">Cantidad de vehiculos</label>
+                <select name="cantidad" id="cantidad">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="campo_horas_formulario">
+                <label for="horas">Cantidad de horas</label>
+                <select name="horas" id="horas">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button onclick="registrarAlquiler()" type="button" class="botom_formulario">Eviar datos</button>
+        </form>
+        <button class="button_mostrar" onclick="mostrarAlquileres()" type="button">Mostrar Alquileres</button>
+    </main>
+    <div class="alquileres" id="alquileres">
+
+    </div>
+    <script src="./index.js"></script>   
+</body>
+</html>
