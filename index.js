@@ -77,12 +77,88 @@ function registrarAlquiler() {
 function recaudacionPorCiudad(ciudad) {
   let gananciasTotalesBicicleta = Alquileres.reduce((sum, value) => {
     if (ciudad === value.ciudad) {
-      
+      return (value.vehiculo === "Bicicleta" ? sum += (parseInt(value.horas) * 4) : sum) 
     }
-    return (value.vehiculo === "Bicicleta" ? sum + value.horas : sum)
+    return sum
   }, 0)
+  let gananciasTotalesMoto = Alquileres.reduce((sum, value) => {
+    if (ciudad === value.ciudad) {
+      return (value.vehiculo === "Moto" ? sum += (parseInt(value.horas) * 6) : sum) 
+    }
+    return sum
+  }, 0)
+  let gananciasTotalesCuatrimoto = Alquileres.reduce((sum, value) => {
+    if (ciudad === value.ciudad) {
+      return (value.vehiculo === "Cuatrimoto" ? sum += (parseInt(value.horas) * 15) : sum) 
+    }
+    return sum
+  }, 0)
+  let gananciasTotalesCarroDeGolf = Alquileres.reduce((sum, value) => {
+    if (ciudad === value.ciudad) {
+      return (value.vehiculo === "Carro de golf" ? sum += (parseInt(value.horas) * 18) : sum) 
+    }
+    return sum
+  }, 0)
+  
+  const gananciasTotalesPorCiudad = {
+    ciudad,
+    Bicicleta: `$${gananciasTotalesBicicleta}`,
+    Moto: `$${gananciasTotalesMoto}`,
+    Cuatrimoto: `$${gananciasTotalesCuatrimoto}`,
+    CarroDeGolf: `$${gananciasTotalesCarroDeGolf}`
+  }
+  return gananciasTotalesPorCiudad
 }
 
+function facturacionTotal() {
+  let facturacionTotalGuadalajara = Alquileres.reduce((sum,value) => {
+    return (value.ciudad === "Guadalajara" ? sum += 1 : sum)
+  }, 0)
+  let facturacionTotalTijuana = Alquileres.reduce((sum,value) => {
+    return (value.ciudad === "Tijuana" ? sum += 1 : sum)
+  }, 0)
+  let facturacionTotalCuliacan = Alquileres.reduce((sum,value) => {
+    return (value.ciudad === "Culiacan" ? sum += 1 : sum)
+  }, 0)
+  let facturacionTotalToluca = Alquileres.reduce((sum,value) => {
+    return (value.ciudad === "Toluca" ? sum += 1 : sum)
+  }, 0)
+  let facturacionTotalMerida = Alquileres.reduce((sum,value) => {
+    return (value.ciudad === "Merida" ? sum += 1 : sum)
+  }, 0)
+  const facturasTotales = facturacionTotalGuadalajara + facturacionTotalTijuana + facturacionTotalCuliacan + facturacionTotalToluca + facturacionTotalMerida
+  const facturTotal = [
+    {ciudad: "Guadalajara", facturas: facturacionTotalGuadalajara, porcentajeTotal: `%${((facturacionTotalGuadalajara * 100) / facturasTotales)}`},
+    {ciudad: "Tijuana", facturas: facturacionTotalTijuana, porcentajeTotal: `%${((facturacionTotalTijuana * 100) / facturasTotales)}`},
+    {ciudad: "Culiacan", facturas: facturacionTotalCuliacan, porcentajeTotal: `%${((facturacionTotalCuliacan * 100) / facturasTotales)}`},
+    {ciudad: "Toluca",  facturas: facturacionTotalToluca, porcentajeTotal: `%${((facturacionTotalToluca * 100) / facturasTotales)}`},
+    {ciudad: "Merida", facturas: facturacionTotalMerida, porcentajeTotal: `%${((facturacionTotalMerida * 100) / facturasTotales)}`}
+  ]
+  facturTotal.sort((a, b) => b.facturas - a.facturas) 
+  return { facturasTotales, facturTotal}
+}
+
+function recaudacionTotal() {
+  let recaudacionGuadalajara = recaudacionPorCiudad("Guadalajara")
+  let recaudacionTijuana = recaudacionPorCiudad("Tijuana")
+  let recaudacionCuliacan = recaudacionPorCiudad("Culiacan")
+  let recaudacionToluca = recaudacionPorCiudad("Toluca")
+  let recaudacionMerida = recaudacionPorCiudad("Merida")
+  const resultadosTotales = {
+    Guadalajara: recaudacionGuadalajara,
+    Tijuana: recaudacionTijuana,
+    Culiacan: recaudacionCuliacan,
+    recaudaciontoluca: recaudacionToluca,
+    recaudacionMerida: recaudacionMerida
+  }
+  let facturasTotales = facturacionTotal()
+  console.log(`Total Recaudad por vehículo y ciudad:`)
+  console.log(resultadosTotales)
+  console.log('Facturas Totales por ciudad')
+  console.log(facturasTotales)
+  console.log('Ciudad con menor facturación')
+  console.log(facturasTotales.facturTotal[facturasTotales.facturTotal.length - 1].ciudad)
+}
 
 mostrarDatos(ciudadesAMostrar, listaDeCiudades)
 mostrarDatos(vehiculosAMostrar, listaDeVehiculos)
