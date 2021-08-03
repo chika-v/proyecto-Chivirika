@@ -8,6 +8,7 @@ var listaDeVehiculos = document.getElementById("listaVehiculos")
 var listaDePrecios = document.getElementById("listaPrecios")
 var listaDeAlquileres = document.getElementById("alquileres")
 
+// Muestra los datos de ciudades, vehícuños y precios en el archivo HTML
 function mostrarDatos(datosAMostrar, listaAAñadir) {
 
     for(var x = 0; x < datosAMostrar.length; x += 1) {
@@ -20,6 +21,7 @@ function mostrarDatos(datosAMostrar, listaAAñadir) {
     }
 }
 
+//Ésta función la uso para registrar un nuevo alquiler en el array de Alquileres y la llamo en mi archivo html
 function registrarAlquiler() {
     const ciudad = document.getElementById("ciudades").value 
     const vehiculo = document.getElementById("vehiculos").value
@@ -42,6 +44,8 @@ function registrarAlquiler() {
     Alquileres.push(alquiler)
   }
   
+  // Esta función me crea un nuevo div con todos los datos de los alquileres guardados, son objetos y por eso accedemos a
+  // Alquileres[posicion].dato, luego se añade el dato al parrafo correspondiente
   function mostrarAlquileres() {
     for(var y = 0; y < Alquileres.length; y += 1) {
       let alquiler = document.createElement("div")
@@ -74,6 +78,7 @@ function registrarAlquiler() {
     }
 }
 
+// Esta función nos da la recaudación total por cada vehículo en cada ciudad y al final de devuelve un objeto con éstos datos
 function recaudacionPorCiudad(ciudad) {
   let gananciasTotalesBicicleta = Alquileres.reduce((sum, value) => {
     if (ciudad === value.ciudad) {
@@ -110,6 +115,8 @@ function recaudacionPorCiudad(ciudad) {
   return gananciasTotalesPorCiudad
 }
 
+// Con ésta función usamos el método reduce de los arrays para recorrer cada objeto dentro del array y obtener un objeto con la 
+// recaudación total y el porcentaje.
 function facturacionTotal() {
   let facturacionTotalGuadalajara = Alquileres.reduce((sum,value) => {
     return (value.ciudad === "Guadalajara" ? sum += 1 : sum)
@@ -138,6 +145,11 @@ function facturacionTotal() {
   return { facturasTotales, facturTotal}
 }
 
+
+// Esta función usa como callBack a la función de recaudaciónPorCiudad y facturaciónTotal y luego te muestra en la consola los
+// resultados requeridos.
+
+//Los datos finales están siendo mostrados en consola, los manejo con el array de objetos de alquileres y usando las funciones que construí.
 function recaudacionTotal() {
   let recaudacionGuadalajara = recaudacionPorCiudad("Guadalajara")
   let recaudacionTijuana = recaudacionPorCiudad("Tijuana")
